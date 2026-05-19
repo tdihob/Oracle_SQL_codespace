@@ -199,3 +199,84 @@ LEFT JOIN employees ON
      employee_id = salesman_id
 WHERE
     order_id = 58;
+
+
+
+
+SELECT
+    first_name,
+    last_name,
+    order_id,
+    status
+FROM
+   orders
+RIGHT JOIN employees ON
+      employee_id = salesman_id
+WHERE
+    job_title ='Sales Representative'
+ORDER BY
+      first_name,
+      last_name;
+
+
+
+
+SELECT
+    employee_id,
+    last_name,
+    first_name,
+    order_id,
+    status
+FROM
+   orders
+RIGHT JOIN employees ON
+       employee_id = salesman_id
+WHERE
+    employee_id = 57;
+
+
+-- Cross Join
+
+
+SELECT * 
+FROM warehouses; 
+
+SELECT
+     product_id,
+     warehouse_id,
+     ROUND(dbms_random.value(10,100)) quantity
+FROM
+    products
+CROSS JOIN warehouses
+ORDER BY product_id;
+
+SELECT *
+FROM EMPLOYEES
+ORDER BY EMPLOYEE_ID
+
+
+SELECT
+(e. first_name || ' ' || e.last_name) employee,
+(m. first_name || ' ' || m.last_name) manager,
+e. job_title
+FROM
+employees e
+LEFT JOIN employees m ON
+m.employee_id = e.manager_id
+ORDER BY
+manager;
+
+
+SELECT
+e1. hire_date,
+(e1.first_name || ' ' || e1.last_name) employee1,
+(e2.first_name || ' ' || e2.last_name) employee2
+FROM
+employees e1
+INNER JOIN employees e2 ON
+e1.employee_id> e2.employee_id
+AND e1.hire_date = e2.hire_date
+ORDER BY
+e1.hire_date DESC,
+employee1,
+employee2;
