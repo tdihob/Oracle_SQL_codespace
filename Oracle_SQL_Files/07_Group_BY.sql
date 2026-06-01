@@ -117,6 +117,6 @@ GROUP BY
 
 HAVING
     SUM( unit_price * quantity) > 500000
-    AND COUNT(1) BETWEEN 10 AND 12
+AND COUNT(1) BETWEEN 10 AND 12
 ORDER BY
     order_value DESC;
